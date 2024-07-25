@@ -1,5 +1,5 @@
 from flask import jsonify, request # type: ignore
-from .service import check_mail, check_name, check_message
+from .service import check_mail, check_name, check_message, check_captcha
 
 def process_ticket():
     content = request.get_json()
@@ -11,6 +11,15 @@ def process_ticket():
             "instance": "/ticket"
         }
         return jsonify(retorno), 400
+    
+    if check_captcha(content):
+        retorno = {
+            "type": "about:blank",
+            "title": "Unauthorized",
+            "detail": "Captcha inválido",
+            "instance": "/ticket"
+        }
+        return jsonify(retorno), 401
     
     if check_mail(content):
         retorno = {
