@@ -1,0 +1,21 @@
+# Usa a imagem base do Python
+FROM python:3.9-slim
+
+# Define o diretório de trabalho
+WORKDIR /app
+
+# Copia o arquivo de requisitos para o container
+COPY requirements.txt ./
+
+# Instala as dependências
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o código do script Python para o container
+COPY main_in_python.py ./
+
+# Define a variável de ambiente para o script
+ENV SMTP_SERVER=smtp.gmail.com
+ENV SMTP_PORT=587
+
+# Executa o script Python
+CMD ["python", "main_in_python.py"]
