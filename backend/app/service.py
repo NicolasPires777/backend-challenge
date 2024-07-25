@@ -17,8 +17,8 @@ def check_name(content):
     return True 
 
 def check_message(content):
-    if 'message' in content:
-        message = content['message']
+    if 'comment' in content:
+        message = content['comment']
         if len(message) > 10 and len(message) < 2000:
             return False
     return True

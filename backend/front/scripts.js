@@ -1,14 +1,16 @@
-document.getElementById('contact-form').addEventListener('submit', function(event) {
+function callapi(event){
     event.preventDefault();
     
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
+    const captcha = grecaptcha.getResponse();
     
     const data = {
         name: name,
         mail: email,
-        comment: message
+        comment: message,
+        "g-recaptcha-response": captcha
     };
     
     fetch('http://127.0.0.1:5000/ticket', {
@@ -24,6 +26,6 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     })
     .catch(error => {
         console.error('Erro:', error);
-        alert('Ocorreu um erro ao enviar a mensagem.');
+        alert(`Ocorreu um erro ao enviar a mensagem: ${error.message}`);
     });
-});
+};

@@ -13,7 +13,7 @@
             <h1>Desafio BackEnd</h1>
         </div>
         <h2>Nicolas Pires</h2>
-        <form id="contact-form">
+        <form id="contact-form" onsubmit="callapi(event)">
             <label for="name">Nome:</label>
             <input type="text" id="name" name="name" required>
             
@@ -22,10 +22,13 @@
             
             <label for="message">Mensagem:</label>
             <textarea id="message" name="message" required></textarea>
+
+            <div class="g-recaptcha" data-sitekey="6LfxgxgqAAAAAOqWuhQDZ0qNP9WRG0fyeB-tKqJ0"></div>
             
             <button type="submit">Enviar</button>
         </form>
     </div>
     <script src="scripts.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>
