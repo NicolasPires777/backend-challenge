@@ -1,5 +1,5 @@
 from flask import jsonify, request # type: ignore
-from .service import check_mail, check_name, check_message, check_captcha
+from .service import check_mail, check_name, check_message, check_captcha, send_mail
 
 def process_ticket():
     content = request.get_json()
@@ -47,5 +47,14 @@ def process_ticket():
             "instance": "/ticket"
         }
         return jsonify(retorno), 400
+    
+    if send_mail(content):
+        retorno = {
+            "type": "about:blank",
+            "title": "Internal Error",
+            "detail": "Ocorreu um erro no envio do email",
+            "instance": "/ticket"
+        }
+        return jsonify(retorno), 500
     
     return jsonify(content), 201

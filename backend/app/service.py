@@ -1,5 +1,9 @@
 import re
 import requests
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+import os
 
 def check_mail(content):
     padrao = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
@@ -33,9 +37,10 @@ def check_captcha(content):
 
 
 def valid_token(token):
-    url = 'https://www.google.com/recaptcha/api/siteverify'
+    url = os.getenv('RECAPTCHA_URL')
+    secret = os.getenv('RECAPTCHA_KEY')
     payload = {
-        'secret': "6LfxgxgqAAAAABx95eubEPpyRk83xBdIbuclTPwG",
+        'secret': secret,
         'response': token
     }
     response = requests.post(url, data=payload)
@@ -48,3 +53,32 @@ def valid_token(token):
             return False
     else:
         return False
+
+def send_mail(content):
+    smtp_server = os.getenv('SMTP_SERVER')
+    smtp_port = int(os.getenv('SMTP_PORT'))
+    title = os.getenv('TEXT_MAIL_TITLE')
+    corpo = content['comment']
+    empresa = os.getenv('MAIL_OWNER')
+    to_emails = [content['mail'],empresa]
+    from_mail = os.getenv('MAIL_AUTH_USER')
+    pass_mail = os.getenv('MAIL_AUTH_PASS')
+
+    msg = MIMEMultipart()
+    msg['From'] = from_mail
+    msg['To'] = ','.join(to_emails)
+    msg['Subject'] = title
+    msg.attach(MIMEText(corpo, 'plain'))
+
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(from_mail, pass_mail)
+        server.sendmail(from_mail,to_emails,msg.as_string())
+        server.quit()
+        print("E-mail enviado")
+        return False
+
+    except Exception as e:
+        print(f"Ocorreu um erro: {e}")
+        return True
