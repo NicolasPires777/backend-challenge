@@ -1,11 +1,11 @@
+openapi: 3.0.0
 info:
   title: Support-API
   description: API para gerenciar solicitações de suporte de uma empresa
-  version: 1.0
-server:
-  url: Apenas rodando local
-  description: Ainda não está em produção
-
+  version: 3.1.0
+servers:
+  - url: http://18.231.160.177:5000
+    description: Ainda não está em produção
 
 paths:
   /ticket:
@@ -15,7 +15,7 @@ paths:
       requestBody:
         required: true
         content: 
-          aplication/json:
+          application/json:
             schema:
               $ref: '#/components/schemas/ticket'
 
@@ -29,19 +29,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/invalidTicket'
-        '401'
+        '401':
           description: Usuário não autorizado
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/invalidTicket'
-        '500'
+        '500':
           description: Servidor encontrou uma situação que não sabe lidar (Internal Server Error)
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/invalidTicket'
-
 
 components:
   schemas:
@@ -53,30 +52,28 @@ components:
           description: token a ser validado pela API do google
         comment:
           type: string
-          description: comentário do cliente, razão pelo qual ele está abrindo o tikcet
+          description: comentário do cliente, razão pelo qual ele está abrindo o ticket
         name:
           type: string
           description: nome do cliente
         mail: 
           type: string
           description: email do cliente
-        
-      invalidTicket:
-        type: object
-        properties:
-          type:
-            type: string
-            description: URL com mais informações sobre o erro, para erros genéricos recebe "about:blank"
-          title:
-            type: string
-            description: Descreve o tipo de problema
-            example: 400 (Bad Request)
-          detail:
-            type: string
-            description: Descrição detalhada do problema
-            example: Email inválido / Campo nome não pode estar vazio
-          instance:
-            type: string
-            description: endpoint da API que gerou o erro
 
-            
+    invalidTicket:
+      type: object
+      properties:
+        type:
+          type: string
+          description: URL com mais informações sobre o erro, para erros genéricos recebe "about:blank"
+        title:
+          type: string
+          description: Descreve o tipo de problema
+          example: 400 (Bad Request)
+        detail:
+          type: string
+          description: Descrição detalhada do problema
+          example: Email inválido / Campo nome não pode estar vazio
+        instance:
+          type: string
+          description: endpoint da API que gerou o erro
