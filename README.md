@@ -56,6 +56,7 @@ Como rodar o FrontEnd e o Backend separadamente
     ```
 
 4. Com os dois conteiners rodando nas portas especificas acima, acesse [localhost](http://localhost:80)
+   Obs: O Captcha funciona apenas em http://localhost:80, http://127.0.0.1:80 não possui chave válida
 
 ## Sobre a API
 
