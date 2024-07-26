@@ -8,6 +8,7 @@ A proposta do desafio é implementar um microserviço para um formulário de con
 - [Como Utilizar](#como-utilizar)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Como Rodar Localmente](#como-rodar-localmente)
+- [Sobre a API](#sobre-a-api)
 - [Estrutura do Projeto](#estrutura-do-projeto)
 
 ## Visão Geral
@@ -56,6 +57,10 @@ Como rodar o FrontEnd e o Backend separadamente
 
 4. Com os dois conteiners rodando nas portas especificas acima, acesse [localhost](http://127.0.0.1:80)
 
+## Sobre a API
+
+Caso você deseja visualizar apenas a API, o arquivo "OpenAPI.yaml" tem as informações sobre o que a API espera receber e como ela deve responder, você pode também copiar todo conteúdo desse arquivo e colar em https://editor.swagger.io/ para melhor visualização
+
 ## Estrutura do Projeto
 
 ```plaintext
@@ -76,4 +81,6 @@ backend-challenge/
 │   ├── scripts.js
 │   ├── docker-compose.yml
 │   └── dockerfile
-└── README.md```
+└── README.md
+
+
