@@ -9,11 +9,6 @@ A proposta do desafio é implementar um microserviço para um formulário de con
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Como Rodar Localmente](#como-rodar-localmente)
 - [Estrutura do Projeto](#estrutura-do-projeto)
-- [Funcionalidades](#funcionalidades)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-- [Contato](#contato)
-- [Agradecimentos](#agradecimentos)
 
 ## Visão Geral
 
