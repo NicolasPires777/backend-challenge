@@ -55,7 +55,7 @@ Como rodar o FrontEnd e o Backend separadamente
     docker run -p 80:80 frontend
     ```
 
-4. Com os dois conteiners rodando nas portas especificas acima, acesse [localhost](http://127.0.0.1:80)
+4. Com os dois conteiners rodando nas portas especificas acima, acesse [localhost](http://localhost:80)
 
 ## Sobre a API
 
