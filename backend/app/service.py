@@ -61,32 +61,32 @@ def send_mail(content):
         captcha = content['g-recaptcha-response']
         if captcha == "dev":
             return False
-    else:
-        smtp_server = os.getenv('SMTP_SERVER')
-        smtp_port = int(os.getenv('SMTP_PORT'))
-        title = os.getenv('TEXT_MAIL_TITLE')
-        corpo = content['comment']
-        empresa = os.getenv('MAIL_OWNER')
-        to_emails = [content['mail'],empresa]
-        from_mail = os.getenv('MAIL_AUTH_USER')
-        pass_mail = os.getenv('MAIL_AUTH_PASS')
+        else:
+            smtp_server = os.getenv('SMTP_SERVER')
+            smtp_port = int(os.getenv('SMTP_PORT'))
+            title = os.getenv('TEXT_MAIL_TITLE')
+            corpo = content['comment']
+            empresa = os.getenv('MAIL_OWNER')
+            to_emails = [content['mail'],empresa]
+            from_mail = os.getenv('MAIL_AUTH_USER')
+            pass_mail = os.getenv('MAIL_AUTH_PASS')
 
-        msg = MIMEMultipart()
-        msg['From'] = from_mail
-        msg['To'] = ','.join(to_emails)
-        msg['Subject'] = title
-        msg.attach(MIMEText(corpo, 'plain'))
+            msg = MIMEMultipart()
+            msg['From'] = from_mail
+            msg['To'] = ','.join(to_emails)
+            msg['Subject'] = title
+            msg.attach(MIMEText(corpo, 'plain'))
 
-        try:
-            server = smtplib.SMTP(smtp_server, smtp_port)
-            server.starttls()
-            server.login(from_mail, pass_mail)
-            server.sendmail(from_mail,to_emails,msg.as_string())
-            server.quit()
-            print("E-mail enviado")
-            return False
+            try:
+                server = smtplib.SMTP(smtp_server, smtp_port)
+                server.starttls()
+                server.login(from_mail, pass_mail)
+                server.sendmail(from_mail,to_emails,msg.as_string())
+                server.quit()
+                print("E-mail enviado")
+                return False
 
-        except Exception as e:
-            print(f"Ocorreu um erro: {e}")
-            return True
+            except Exception as e:
+                print(f"Ocorreu um erro: {e}")
+                return True
     
