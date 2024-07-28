@@ -17,7 +17,7 @@ Este projeto consiste em um microserviço para gerenciar formulários de contato
 
 ## Como Utilizar
 
-Caso você queira apenas visualizar o resultado como usuário final, acesse [este link](http://18.231.160.177) (Talvez esse link não esteja disponível no futuro).
+Caso você queira apenas visualizar o resultado como usuário final, acesse [este link](http://18.231.47.85) (Talvez esse link não esteja disponível no futuro).
 
 ## Tecnologias Utilizadas
 
