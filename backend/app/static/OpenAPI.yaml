@@ -4,7 +4,7 @@ info:
   description: API para gerenciar solicitações de suporte de uma empresa
   version: 3.1.0
 servers:
-  - url: http://18.231.160.177:5000
+  - url: http://127.0.0.1:5000
     description: Hospedado em Amazon AWS
 
 paths:
@@ -47,9 +47,9 @@ components:
     ticket:
       type: object
       properties:
-        recaptcha:
+        g-recaptcha-response:
           type: string
-          description: token a ser validado pela API do google
+          description: token a ser validado pela API do google (Preencha com "dev" para testes)
         comment:
           type: string
           description: comentário do cliente, razão pelo qual ele está abrindo o ticket
