@@ -47,7 +47,7 @@ Como rodar o FrontEnd e o Backend separadamente
     docker build -t backend .
     docker run -p 5000:5000 backend
     ```
-    Caso queira acessar a documentação da API, acesso http://localhost:5000/api/docs
+    Caso queira acessar a documentação da API, acesse http://localhost:5000/api/docs
 
 3. Em outro terminal, faça o build da imagem e rode o container do frontend:
     ```sh
