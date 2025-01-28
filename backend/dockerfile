@@ -19,11 +19,11 @@ ENV FLASK_APP=run.py
 ENV FLASK_ENV=production
 ENV SMTP_SERVER="smtp.gmail.com"
 ENV SMTP_PORT=587
-ENV MAIL_OWNER="Nicolas@zedia.com.br"
-ENV RECAPTCHA_KEY="6LfxgxgqAAAAABx95eubEPpyRk83xBdIbuclTPwG"
+ENV MAIL_OWNER=""
+ENV RECAPTCHA_KEY=""
 ENV RECAPTCHA_URL="https://www.google.com/recaptcha/api/siteverify"
-ENV MAIL_AUTH_USER="nicolasodev@gmail.com"
-ENV MAIL_AUTH_PASS="rjrf qwas bouk opar"
+ENV MAIL_AUTH_USER=""
+ENV MAIL_AUTH_PASS=""
 ENV TEXT_MAIL_TITLE="Backend Challenge - Nicolas"
 
 # Exponha a porta que o Flask irá rodar
